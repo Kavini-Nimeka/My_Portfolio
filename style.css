@@ -9,6 +9,9 @@
 body{
     color: #ededed;
     background: #001b29;
+    font-family: Arial, sans-serif;
+  line-height: 1.6;
+  padding: 10px;
 }
 
 .header{
@@ -16,7 +19,7 @@ body{
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 10%;
+    padding: 1rem 5%;
     background: transparent; /*#051129*/
     display: flex;
     justify-content: space-between;
@@ -76,7 +79,7 @@ body{
     background-position: center;
     display: flex;
     align-items: center;
-    padding: 70px 10% 0;
+    padding: 4rem 5% 0;
     justify-content: space-between;
 }
 
@@ -85,7 +88,7 @@ body{
 }
 
 .home-content h3{
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: 700;
     opacity: 0;
     animation: slideBottom 1s ease forwards;
@@ -103,7 +106,7 @@ body{
 }
 
 .home-content h1{
-    font-size: 56px;
+    font-size: 3.5rem;
     font-weight: 700;
     margin: -3px 0;
     opacity: 0;
@@ -112,7 +115,7 @@ body{
 }
 
 .home-content p{
-    font-size: 20px;
+    font-size: 1.5rem;
     opacity: 0;
     animation: slideLeft 1s ease forwards;
     animation-delay: 1s;
@@ -209,7 +212,7 @@ body{
 }
 
 .about-text h2{
-    font-size: 60px;
+    font-size: 3.5rem;
 }
 
 .about-text h2 span{
@@ -314,7 +317,7 @@ body{
 }
 
 .container{
-    padding: 90px;
+    padding: 3rem;
 }
 
 section{
@@ -325,8 +328,8 @@ section{
 .container1{
     width: auto;
     height: auto;
-    padding: 75px 90px;
-    margin-left: 120px;
+    padding: 3rem;
+    margin-left: 0;
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
@@ -735,7 +738,7 @@ section{
 }
 
 .contact-text h2{
-    font-size: 90px;
+    font-size: 5rem;
     line-height: 1;
     text-align: center;
 }
@@ -895,4 +898,136 @@ section{
     background: #0ef;
     color: #081b29;
     box-shadow: 0 0 20px #0ef;
+}
+
+/* Mobile (up to 768px) */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem 3%;
+  }
+  .navbar a {
+    font-size: 1.2rem; /* Was 25px */
+    margin-left: 1rem;
+  }
+  .home {
+    flex-direction: column;
+    padding: 2rem 5%;
+    height: auto;
+  }
+  .home-content {
+    max-width: 100%;
+    text-align: center;
+  }
+  .first-img img {
+    height: 200px;
+    width: 200px;
+    margin: 1rem auto;
+  }
+  .about {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .about-img {
+    margin: 0 auto;
+  }
+  .about-img img {
+    height: 200px;
+    width: 200px;
+  }
+  .services-list {
+    grid-template-columns: 1fr;
+  }
+  .portfolio-content {
+    grid-template-columns: 1fr;
+  }
+  .contact {
+    grid-template-columns: 1fr;
+    padding-left: 0;
+    text-align: center;
+  }
+  .contact-form form input,
+  .contact-form textarea {
+    width: 100%;
+  }
+  .radial-bars .radial-bar {
+    width: 50%; /* Adjust for smaller screens */
+    margin: 1rem;
+  }
+  .container1 {
+    padding: 2rem;
+  }
+}
+
+/* Tablet (768px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .home {
+    flex-direction: row;
+    padding: 3rem 5%;
+  }
+  .first-img img {
+    height: 250px;
+    width: 250px;
+  }
+  .about-img img {
+    height: 250px;
+    width: 250px;
+  }
+  .services-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .portfolio-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .radial-bars .radial-bar {
+    width: 33.33%;
+  }
+}
+
+/* Desktop (above 1024px) */
+@media (min-width: 1025px) {
+  .home-content {
+    max-width: 600px;
+  }
+  .first-img img {
+    height: 300px;
+    width: 300px;
+  }
+  .about-img img {
+    height: 300px;
+    width: 300px;
+  }
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+.navbar {
+  display: flex;
+}
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  .navbar {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: #001b29;
+    padding: 1rem;
+  }
+  .navbar.active {
+    display: flex;
+  }
+  .navbar a {
+    margin: 0.5rem 0;
+    font-size: 1.5rem;
+  }
 }
