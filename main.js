@@ -57,14 +57,20 @@ function showMore() {
     document.getElementById('contact-form').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    emailjs.sendForm('service_wv1z76l', 'template_m6uad3p', this)
-        .then(function() {
-            Swal.fire({
-                icon: 'success',
-                title: 'Message Sent!',
-                text: 'Thank you for contacting me. I will get back to you soon!',
-                confirmButtonColor: '#00eeff'
-            });
+    emailjs.send('service_wv1z76l', 'template_m6uad3p', {
+        name: this.name.value,
+        email: this.email.value,
+        subject: this.subject.value,
+        message: this.message.value
+    }, 'Y_rK0e1g6gqn0xXZz')
+    .then(function(response) {
+        Swal.fire({
+            icon: 'success',
+            title: 'Message Sent!',
+            text: 'Thank you for contacting me. I will get back to you soon!',
+            confirmButtonColor: '#00eeff'
+        });
+        document.getElementById('contact-form').reset();
         }, function(error) {
             Swal.fire({
                 icon: 'error',
