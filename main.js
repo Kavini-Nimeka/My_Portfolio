@@ -120,65 +120,53 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // EmailJS Contact Form
 
-    const contactForm = document.getElementById("contact-form");
+const contactForm = document.getElementById("contact-form");
+const sendButton = document.querySelector(".send-button");
 
+if (contactForm) {
+    contactForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
 
-    if(contactForm){
+        const originalButtonContent = sendButton.innerHTML;
 
-        contactForm.addEventListener("submit", function(e){
+        sendButton.disabled = true;
+        sendButton.innerHTML = `
+            <span>Sending...</span>
+            <i class="bx bx-loader-alt bx-spin"></i>
+        `;
 
-            e.preventDefault();
+        try {
+            const response = await emailjs.sendForm(
+                "service_wv1z76l",
+                "template_m6uad3p",
+                contactForm
+            );
 
+            console.log("Email sent successfully:", response);
 
-            emailjs.send(
-    "service_wv1z76l",
-    "template_m6uad3p",
-    {
-        name:this.name.value,
-        email:this.email.value,
-        subject:this.subject.value,
-        message:this.message.value
-    }
-)
-
-            .then(function(){
-
-                Swal.fire({
-
-                    icon:"success",
-                    title:"Message Sent!",
-                    text:"Thank you for contacting me. I will get back to you soon!",
-                    confirmButtonColor:"#00eeff"
-
-                });
-
-
-                contactForm.reset();
-
-
-            })
-
-            .catch(function(){
-
-
-                Swal.fire({
-
-                    icon:"error",
-                    title:"Oops...",
-                    text:"Something went wrong. Please try again!",
-                    confirmButtonColor:"#ff4d4d"
-
-                });
-
-
+            await Swal.fire({
+                icon: "success",
+                title: "Message Sent!",
+                text: "Thank you for contacting me. I will get back to you soon!",
+                confirmButtonColor: "#00eeff"
             });
 
+            contactForm.reset();
+        } catch (error) {
+            console.error("EmailJS error:", error);
 
-
-        });
-
-    }
-
+            Swal.fire({
+                icon: "error",
+                title: "Message Not Sent",
+                text: error.text || "Something went wrong. Please try again.",
+                confirmButtonColor: "#ff4d4d"
+            });
+        } finally {
+            sendButton.disabled = false;
+            sendButton.innerHTML = originalButtonContent;
+        }
+    });
+}
 
 
 
