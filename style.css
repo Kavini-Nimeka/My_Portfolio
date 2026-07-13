@@ -424,14 +424,18 @@ section{
 }
 
 .progress-line.javascript span{
-    width: 60%;
+    width: 70%;
 }
 
 .progress-line.python span{
-    width: 50%;
+    width: 70%;
 }
 
 .progress-line.php span{
+    width: 50%;
+}
+
+.progress-line.typescript span{
     width: 50%;
 }
 
@@ -440,7 +444,7 @@ section{
 }
 
 .progress-line.java span{
-    width: 50%;
+    width: 70%;
 }
 
 .progress-line.kotlin span{
@@ -456,14 +460,18 @@ section{
 }
 
 .progress-line.javascript span::after{
-    content: "60%";
+    content: "70%";
 }
 
 .progress-line.python span::after{
-    content: "50%";
+    content: "70%";
 }
 
 .progress-line.php span::after{
+    content: "50%";
+}
+
+.progress-line.typescript span::after{
     content: "50%";
 }
 
@@ -472,7 +480,7 @@ section{
 }
 
 .progress-line.java span::after{
-    content: "50%";
+    content: "70%";
 }
 
 .progress-line.kotlin span::after{
@@ -826,49 +834,85 @@ section{
     box-shadow: 0 0 20px #0ef;
 }
 
-.contact-form form{
-    position: relative;
+.contact-form {
+    width: 100%;
+    padding: clamp(24px, 4vw, 38px);
+    border: 1px solid rgba(0, 238, 255, 0.15);
+    border-radius: 18px;
+    background: rgba(6, 37, 53, 0.82);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.27);
 }
 
-.contact-form form input,form textarea{
-    border: none;
+.contact-form .form-group {
+    display: grid;
+    gap: 7px;
+    margin-bottom: 18px;
+}
+
+.contact-form .form-group label {
+    color: #ededed;
+    font-weight: 700;
+}
+
+.contact-form .form-group input,
+.contact-form .form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
     outline: none;
-    width: 90%;
-    padding: 18px;
-    background: #555557;
-    color: #000;
+    color: #ededed;
+    background: #0a3345;
+    font-family: inherit;
     font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    border-radius: 0.5rem;
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
 }
 
-.contact-form textarea{
-    resize: none;
-    height: 220px;
+.contact-form .form-group textarea {
+    min-height: 180px;
+    resize: vertical;
 }
 
-.contact-form form .send{
-     display: inline-block;
-    padding: 12px 20px;
-    background: #0ef;
-    border-radius: 40px;
-    font-size: 18px;
+.contact-form .form-group input::placeholder,
+.contact-form .form-group textarea::placeholder {
+    color: #93a3ac;
+}
+
+.contact-form .form-group input:focus,
+.contact-form .form-group textarea:focus {
+    border-color: #00eeff;
+    background: #0c3b4f;
+    box-shadow: 0 0 0 4px rgba(0, 238, 255, 0.1);
+}
+
+.contact-form .send-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    min-height: 48px;
+    margin-top: 5px;
+    padding: 12px 28px;
+    border: 2px solid #00eeff;
+    border-radius: 999px;
     color: #001b29;
-    letter-spacing: 1px;
-    text-decoration: none;
-    font-weight: 600;
-    opacity: 0;
-    animation: slideTop 1s ease forwards;
-    animation-delay: 2s;
-    box-shadow: 0 0 5px #0ef,
-    0 0 25px #0ef;
+    background: #00eeff;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
 
-.contact-form form .send:hover{
-    box-shadow: 0 0 5px cyan,
-    0 0 25px cyan, 0 0 50px cyan,
-    0 0 100px cyan, 0 0 200px cyan
+.contact-form .send-button:hover,
+.contact-form .send-button:focus-visible {
+    transform: translateY(-3px);
+    color: #00eeff;
+    background: transparent;
+    box-shadow: 0 0 24px rgba(0, 238, 255, 0.75);
 }
 
 .last-text p{
@@ -1046,3 +1090,71 @@ section{
   }
 }
 
+/* Technical and soft skills side by side */
+.skills-section {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 4rem;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 4rem 5rem;
+}
+
+.skills-section .container1 {
+    width: 100%;
+    margin: 0;
+}
+
+.radial-bars {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(150px, 1fr));
+    justify-items: center;
+}
+
+.radial-bars .radial-bar {
+    width: 100%;
+    max-width: 190px;
+    height: 200px;
+    margin: 0 0 2rem;
+}
+
+/* Center Latest Projects */
+#Portfolio {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.main-text {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.portfolio-content {
+    margin: 0 auto;
+    justify-content: center;
+}
+
+/* Mobile layout */
+@media (max-width: 768px) {
+    .skills-section {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 1.5rem 3rem;
+    }
+
+    .skills-section .container1 {
+        padding: 1.5rem 0;
+    }
+
+    .radial-bars {
+        grid-template-columns: repeat(2, minmax(130px, 1fr));
+    }
+
+    .radial-bars .radial-bar {
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
+}
