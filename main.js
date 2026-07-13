@@ -131,16 +131,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             emailjs.send(
-                "service_wv1z76l",
-                "template_m6uad3p",
-                {
-                    name:this.name.value,
-                    email:this.email.value,
-                    subject:this.subject.value,
-                    message:this.message.value
-                },
-                "Y_rK0e1g6gqn0xXZz"
-            )
+    "service_wv1z76l",
+    "template_m6uad3p",
+    {
+        name:this.name.value,
+        email:this.email.value,
+        subject:this.subject.value,
+        message:this.message.value
+    }
+)
 
             .then(function(){
 
